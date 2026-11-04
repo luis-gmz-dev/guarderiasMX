@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 import { RouterLink } from 'vue-router'
-import { Banknote, BookOpen, ChevronRight, ClipboardList, Map, Tags, Users } from 'lucide-vue-next'
+import { Banknote, BookOpen, ChevronRight, ClipboardList, Map, MapPinned, Search, Tags, Timer, Users } from 'lucide-vue-next'
 import BloqueAnuncio from '@/components/anuncios/BloqueAnuncio.vue'
 import { guias } from '@/domain/guias'
 
@@ -10,6 +10,10 @@ const iconos: Record<string, Component> = {
   'requisitos-e-inscripcion': ClipboardList,
   'costo-y-horario': Banknote,
   esquemas: Tags,
+  'como-usar-el-mapa': Map,
+  'como-leer-el-directorio': Search,
+  'lista-de-espera': Timer,
+  'si-el-dato-no-coincide': MapPinned,
 }
 </script>
 

@@ -67,7 +67,10 @@ export function cuerpoHtml(path: string, guarderias: Guarderia[]): string {
         return p(bloque.texto ?? '')
       })
       .join('')
-    return `<article class="pagina-aviso"><p class="miga">${enlace('/guias', 'Guías')}</p><h1>${escapeHtml(guia.titulo)}</h1>${bloques}</article>`
+    const fuentes = guia.referencias
+      .map((fuente) => `<li><a href="${escapeHtml(fuente.url)}">${escapeHtml(fuente.titulo)}</a></li>`)
+      .join('')
+    return `<article class="pagina-aviso"><p class="miga">${enlace('/guias', 'Guías')}</p><h1>${escapeHtml(guia.titulo)}</h1>${bloques}<h2>De dónde sale</h2><ul>${fuentes}</ul></article>`
   }
   const estados = agruparEstados(guarderias)
   if (path === '/estados') {

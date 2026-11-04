@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://guarderias.g-corp.site/</loc>
-  </url>
-  <url>
-    <loc>https://guarderias.g-corp.site/preguntas-frecuentes</loc>
-  </url>
-  <url>
-    <loc>https://guarderias.g-corp.site/aviso-legal</loc>
-  </url>
-  <url>
-    <loc>https://guarderias.g-corp.site/privacidad</loc>
-  </url>
+  <url><loc>https://guarderias.g-corp.site/</loc></url>
+  <url><loc>https://guarderias.g-corp.site/preguntas-frecuentes</loc></url>
+  <url><loc>https://guarderias.g-corp.site/aviso-legal</loc></url>
+  <url><loc>https://guarderias.g-corp.site/privacidad</loc></url>
+  <url><loc>https://guarderias.g-corp.site/guias</loc></url>
+  <url><loc>https://guarderias.g-corp.site/guias/quien-tiene-derecho</loc></url>
+  <url><loc>https://guarderias.g-corp.site/guias/requisitos-e-inscripcion</loc></url>
+  <url><loc>https://guarderias.g-corp.site/guias/costo-y-horario</loc></url>
+  <url><loc>https://guarderias.g-corp.site/guias/esquemas</loc></url>
+  <url><loc>https://guarderias.g-corp.site/guias/como-usar-el-mapa</loc></url>
+  <url><loc>https://guarderias.g-corp.site/guias/como-leer-el-directorio</loc></url>
+  <url><loc>https://guarderias.g-corp.site/guias/lista-de-espera</loc></url>
+  <url><loc>https://guarderias.g-corp.site/guias/si-el-dato-no-coincide</loc></url>
+  <url><loc>https://guarderias.g-corp.site/estados</loc></url>
 </urlset>

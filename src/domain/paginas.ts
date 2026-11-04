@@ -42,7 +42,7 @@ export const paginasFijas: MetaPagina[] = [
     path: '/guias',
     titulo: 'Guías de guarderías del IMSS',
     descripcion:
-      'Quién tiene derecho, qué documentos piden, cuánto cuesta y qué significa la letra del nombre. No es un sitio del IMSS.',
+      'Derecho, documentos, cupo, horario, cómo leer el Excel y qué hacer si un dato no coincide. Cada guía cita su fuente. No es un sitio del IMSS.',
   },
   {
     path: '/estados',

@@ -24,6 +24,15 @@ const guia = computed(() => buscarGuia(String(route.params.slug ?? '')))
         </ul>
       </template>
     </div>
+    <h2>De dónde sale</h2>
+    <ul class="lista-referencias">
+      <li v-for="fuente in guia.referencias" :key="fuente.url">
+        <a :href="fuente.url" rel="noopener noreferrer">{{ fuente.titulo }}</a>
+      </li>
+    </ul>
+    <p class="entradilla">
+      Este mapa no es un sitio del IMSS. Las reglas del trámite las aplica el Instituto.
+    </p>
     <p class="acciones-pagina">
       <RouterLink class="boton" to="/"><Map :size="16" aria-hidden="true" />Ver el mapa</RouterLink>
       <RouterLink class="boton secundario" to="/estados">
