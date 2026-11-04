@@ -41,9 +41,19 @@ export const preguntas: Pregunta[] = [
     respuesta: 'No. Aparecer en el mapa no tiene costo y nadie puede comprar un lugar en la lista.',
   },
   {
+    pregunta: '¿Por qué existe este mapa?',
+    respuesta:
+      'El directorio oficial está en un Excel. Este mapa lo muestra para buscar una unidad y abrir la ruta. No inscribe ni asigna lugar: solo facilita la consulta de esa lista pública.',
+  },
+  {
     pregunta: '¿Por qué hay anuncios?',
     respuesta:
-      'El sitio es gratuito. Google AdSense puede mostrar anuncios. Esa publicidad no cambia los datos ni el orden de las guarderías.',
+      'El sitio es gratuito para quien lo consulta. Google AdSense puede mostrar anuncios para ayudar a cubrir el hospedaje. Esa publicidad no cambia los datos ni el orden de las guarderías.',
+  },
+  {
+    pregunta: '¿Este sitio usa cookies?',
+    respuesta:
+      'No guarda cookies propias de sesión, porque no hay cuentas. Si se muestra un anuncio, Google puede guardar cookies para medirlo y elegirlo. Puedes limitarlas en tu navegador o en la configuración de anuncios de Google. El detalle está en la página de privacidad.',
   },
   {
     pregunta: '¿Qué hago si la dirección o el teléfono no coinciden?',

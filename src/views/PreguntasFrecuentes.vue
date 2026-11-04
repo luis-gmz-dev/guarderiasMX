@@ -15,13 +15,23 @@ import { preguntas } from '@/domain/preguntas'
       </article>
     </section>
     <p>
+      El alcance del sitio está en el
+      <RouterLink to="/aviso-legal">aviso legal</RouterLink>
+      y el trato de datos y cookies en
+      <RouterLink to="/privacidad">privacidad</RouterLink>.
+    </p>
+    <p>
       Más detalle en las
       <RouterLink to="/guias">guías</RouterLink>:
       <RouterLink to="/guias/quien-tiene-derecho">quién tiene derecho</RouterLink>,
       <RouterLink to="/guias/requisitos-e-inscripcion">requisitos</RouterLink>,
-      <RouterLink to="/guias/costo-y-horario">costo y horario</RouterLink>
+      <RouterLink to="/guias/costo-y-horario">costo y horario</RouterLink>,
+      <RouterLink to="/guias/esquemas">esquemas</RouterLink>,
+      <RouterLink to="/guias/como-usar-el-mapa">cómo usar el mapa</RouterLink>,
+      <RouterLink to="/guias/como-leer-el-directorio">cómo leer el directorio</RouterLink>,
+      <RouterLink to="/guias/lista-de-espera">lista de espera</RouterLink>
       y
-      <RouterLink to="/guias/esquemas">esquemas</RouterLink>.
+      <RouterLink to="/guias/si-el-dato-no-coincide">si el dato no coincide</RouterLink>.
     </p>
     <BloqueAnuncio />
   </article>
