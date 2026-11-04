@@ -50,7 +50,7 @@ npm run seed
    - Variable de entorno: `NODE_VERSION` = `22`
 4. No agregues `NODE_ENV` con el valor `production`. El comando `npm run seed` usa `tsx`, y esa variable haría que no se instale.
 5. Guarda y espera el primer despliegue. Cloudflare te da una dirección que termina en `.pages.dev`. Ábrela y comprueba el mapa, el aviso legal y la privacidad.
-6. En el proyecto de Pages abre **Custom domains** y agrega `guarderias.g-corp.site`. Si el DNS de `g-corp.site` ya está en Cloudflare, Pages crea el registro. Si el DNS está en otro lugar, crea un CNAME: el nombre `guarderias` apunta al dominio `.pages.dev` que te mostró Cloudflare.
+6. En el proyecto de Pages abre **Custom domains** y agrega `guarderiasmx.g-corp.site`. Si el DNS de `g-corp.site` ya está en Cloudflare, Pages crea el registro. Si el DNS está en otro lugar, crea un CNAME: el nombre `guarderias` apunta al dominio `.pages.dev` que te mostró Cloudflare.
 7. Cada push a `main` vuelve a publicar el sitio. El del lunes, cuando el Excel del IMSS cambió, también. Las rutas de Vue las resuelve el modo de aplicación de una sola página de Cloudflare. No hace falta un `public/_redirects` que envíe todo a `index.html`: en Workers esa regla se llama a sí misma y el despliegue falla. El service worker no guarda `guarderias.json`.
 
 Antes de publicar, escribe el correo de contacto en `src/domain/sitio.ts`. Mientras esté vacío, el pie no muestra un enlace de correo y la página de privacidad avisa que falta.

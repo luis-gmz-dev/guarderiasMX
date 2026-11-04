@@ -18,8 +18,8 @@ describe('paginas indexables', () => {
   it('arma el titulo y la url canonica', () => {
     expect(tituloDocumento(sitio.nombre)).toBe('Mapa de guarderías')
     expect(tituloDocumento('Preguntas frecuentes')).toBe('Preguntas frecuentes · Mapa de guarderías')
-    expect(urlCanonica('/')).toBe('https://guarderias.g-corp.site/')
-    expect(urlCanonica('/preguntas-frecuentes')).toBe('https://guarderias.g-corp.site/preguntas-frecuentes')
+    expect(urlCanonica('/')).toBe('https://guarderiasmx.g-corp.site/')
+    expect(urlCanonica('/preguntas-frecuentes')).toBe('https://guarderiasmx.g-corp.site/preguntas-frecuentes')
   })
 
   it('publica las mismas preguntas en la pagina y en el esquema', () => {

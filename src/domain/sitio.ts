@@ -1,6 +1,6 @@
 export const sitio = {
   nombre: 'Mapa de guarderías',
-  url: 'https://guarderias.g-corp.site',
+  url: 'https://guarderiasmx.g-corp.site',
   descripcion:
     'Consulta el directorio público de guarderías del IMSS en un mapa. No es un sitio oficial. Busca por nombre, estado o municipio.',
   fuenteExcel:
