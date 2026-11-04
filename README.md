@@ -40,7 +40,7 @@ npm run seed
 
 ## Publicar en Cloudflare Pages
 
-1. Crea un repositorio en GitHub y sube esta carpeta a la rama `main`. No subas `.env` ni `.env.local`.
+1. Crea un repositorio en GitHub y sube esta carpeta a la rama `main`.
 2. Entra a Cloudflare. Abre **Workers & Pages**, pulsa **Create** y elige **Pages**. Después **Connect to Git** y selecciona el repositorio.
 3. En la configuración del build usa:
    - Framework preset: Vue
@@ -57,8 +57,8 @@ Antes de publicar, escribe el correo de contacto en `src/domain/sitio.ts`. Mient
 
 ## Anuncios
 
-El listado carga un anuncio de la cuenta `ca-pub-5855061986869939`. No hace falta una variable en Cloudflare ni un servidor: el navegador pide el anuncio a Google. `public/ads.txt` declara esa misma cuenta.
+El script de AdSense, con la cuenta `ca-pub-5855061986869939`, está en el `<head>` de `index.html`. El mapa, las preguntas frecuentes, el aviso legal y la privacidad comparten ese HTML, así que el script va en todas. Al cambiar de página, la aplicación lo vuelve a comprobar y no lo duplica. `public/ads.txt` declara la misma cuenta. No hace falta una variable en Cloudflare ni un servidor.
 
-En AdSense deja apagados los anuncios automáticos. Si se encienden, Google puede tapar el mapa. El bloque del listado es el único anuncio del sitio. Si creas un bloque de display y AdSense te da un `data-ad-slot`, pégalo en `anuncioSlot` dentro de `src/domain/sitio.ts`.
+En AdSense deja apagados los anuncios automáticos. Si se encienden, Google puede tapar el mapa. El bloque manual está en el listado y al final de las páginas de texto. Si creas un bloque de display y AdSense te da un `data-ad-slot`, pégalo en `anuncioSlot` dentro de `src/domain/sitio.ts`.
 
-AdSense puede rechazar el sitio si considera que un directorio tiene poco contenido propio. Las páginas que va a leer son el mapa, el aviso legal y la privacidad.
+AdSense puede rechazar el sitio si considera que un directorio tiene poco contenido propio. Además del mapa hay guías, fichas por estado y fichas de municipios con al menos cinco unidades. El build escribe esas rutas en `dist` y regenera `sitemap.xml`.

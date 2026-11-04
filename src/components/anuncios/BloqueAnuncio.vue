@@ -17,11 +17,9 @@ onMounted(() => {
   <aside class="anuncio" aria-label="Anuncio">
     <ins
       class="adsbygoogle"
-      style="display: block"
+      style="display: block; width: 100%; height: 90px"
       :data-ad-client="sitio.adsense"
       :data-ad-slot="sitio.anuncioSlot || undefined"
-      data-ad-format="auto"
-      data-full-width-responsive="true"
     />
   </aside>
 </template>

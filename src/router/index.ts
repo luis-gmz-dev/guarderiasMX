@@ -1,12 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { sitio } from '@/domain/sitio'
+import { asegurarAdsense } from '@/domain/adsense'
+import { aplicarSeo } from '@/domain/seo'
 import MapView from '@/views/MapView.vue'
-
-declare module 'vue-router' {
-  interface RouteMeta {
-    titulo?: string
-  }
-}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,16 +9,44 @@ const router = createRouter({
     { path: '/', name: 'mapa', component: MapView },
     { path: '/admin', redirect: '/' },
     {
+      path: '/guias',
+      name: 'guias',
+      component: () => import('@/views/GuiasIndex.vue'),
+    },
+    {
+      path: '/guias/:slug',
+      name: 'guia',
+      component: () => import('@/views/GuiaDetalle.vue'),
+    },
+    {
+      path: '/estados',
+      name: 'estados',
+      component: () => import('@/views/EstadosIndex.vue'),
+    },
+    {
+      path: '/estados/:slug',
+      name: 'estado',
+      component: () => import('@/views/EstadoDetalle.vue'),
+    },
+    {
+      path: '/municipios/:estado/:municipio',
+      name: 'municipio',
+      component: () => import('@/views/MunicipioDetalle.vue'),
+    },
+    {
+      path: '/preguntas-frecuentes',
+      name: 'preguntas',
+      component: () => import('@/views/PreguntasFrecuentes.vue'),
+    },
+    {
       path: '/aviso-legal',
       name: 'aviso-legal',
       component: () => import('@/views/AvisoLegal.vue'),
-      meta: { titulo: 'Aviso legal' },
     },
     {
       path: '/privacidad',
       name: 'privacidad',
       component: () => import('@/views/AvisoPrivacidad.vue'),
-      meta: { titulo: 'Privacidad' },
     },
   ],
   scrollBehavior() {
@@ -32,7 +55,8 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
-  document.title = to.meta.titulo ? `${to.meta.titulo} · ${sitio.nombre}` : sitio.nombre
+  aplicarSeo(to.path)
+  asegurarAdsense()
 })
 
 export default router

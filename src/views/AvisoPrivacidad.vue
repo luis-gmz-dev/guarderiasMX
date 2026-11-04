@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BloqueAnuncio from '@/components/anuncios/BloqueAnuncio.vue'
 import { sitio } from '@/domain/sitio'
 </script>
 
@@ -22,5 +23,6 @@ import { sitio } from '@/domain/sitio'
       <a :href="`mailto:${sitio.correo}`">{{ sitio.correo }}</a>
     </p>
     <p v-else>El correo de contacto se publicará en esta página antes de ofrecer el sitio al público.</p>
+    <BloqueAnuncio />
   </article>
 </template>

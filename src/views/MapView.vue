@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import MapCanvas from '@/components/map/MapView.vue'
 import MapMarker from '@/components/map/MapMarker.vue'
 import UserLocation from '@/components/map/UserLocation.vue'
@@ -10,6 +11,7 @@ import { useGuarderias } from '@/composables/useGuarderias'
 import { etiquetaActualizacion } from '@/domain/actualizacion'
 
 const store = useGuarderias()
+const route = useRoute()
 const { error: errorUbicacion, pending: ubicando, request: pedirUbicacion } = useGeolocation()
 const encuadre = ref(0)
 const etiqueta = computed(() => etiquetaActualizacion(store.actualizado))
@@ -26,6 +28,20 @@ watch(
   () => {
     encuadre.value += 1
   },
+)
+
+watch(
+  () => [store.loaded, route.query.estado, route.query.municipio],
+  () => {
+    if (!store.loaded) return
+    const estado = typeof route.query.estado === 'string' ? route.query.estado : ''
+    const municipio = typeof route.query.municipio === 'string' ? route.query.municipio : ''
+    if (estado && store.estados.includes(estado)) store.setEstado(estado)
+    else store.setEstado('')
+    if (municipio && store.municipios.includes(municipio)) store.municipio = municipio
+    else store.municipio = ''
+  },
+  { immediate: true },
 )
 
 function ubicar(): void {

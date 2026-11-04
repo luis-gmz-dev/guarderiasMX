@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BloqueAnuncio from '@/components/anuncios/BloqueAnuncio.vue'
 import { sitio } from '@/domain/sitio'
 </script>
 
@@ -19,5 +20,6 @@ import { sitio } from '@/domain/sitio'
       confirmar el dato con la guardería o con el IMSS antes de ir.
     </p>
     <p>Aparecer en este mapa no tiene costo y nadie puede pagar para cambiar su lugar en la lista.</p>
+    <BloqueAnuncio />
   </article>
 </template>

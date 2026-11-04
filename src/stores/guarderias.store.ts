@@ -1,11 +1,22 @@
 import { computed, ref, shallowRef } from 'vue'
 import { defineStore } from 'pinia'
 import { distanciaMetros } from '@/domain/geo'
+import { fijarDirectorioSeo } from '@/domain/seo'
 import { textoBusqueda } from '@/domain/texto-busqueda'
 import { leerDirectorio } from '@/services/directorio'
 import type { Coordenadas, Guarderia } from '@/types/guarderia'
 
+const textos = new WeakMap<Guarderia, string>()
+
 function texto(guarderia: Guarderia): string {
+  const guardado = textos.get(guarderia)
+  if (guardado !== undefined) return guardado
+  const nuevo = construirTexto(guarderia)
+  textos.set(guarderia, nuevo)
+  return nuevo
+}
+
+function construirTexto(guarderia: Guarderia): string {
   return textoBusqueda(
     [
       guarderia.nombre,
@@ -75,6 +86,7 @@ export const useGuarderiasStore = defineStore('guarderias', () => {
       const directorio = await leerDirectorio()
       items.value = directorio.guarderias
       actualizado.value = directorio.actualizado
+      fijarDirectorioSeo(directorio.guarderias)
       loaded.value = true
     } catch {
       error.value = 'No se pudieron cargar las guarderías.'

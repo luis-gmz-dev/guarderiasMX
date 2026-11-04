@@ -3,6 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
+import { prerenderPaginas } from './scripts/prerender-paginas.ts'
 
 export default defineConfig({
   plugins: [
@@ -11,7 +12,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
       manifest: false,
-      includeAssets: ['favicon.ico', 'icons/icon-192.png', 'icons/icon-512.png', 'manifest.webmanifest'],
+      includeAssets: ['favicon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'manifest.webmanifest'],
       workbox: {
         navigateFallback: '/index.html',
         runtimeCaching: [
@@ -33,6 +34,7 @@ export default defineConfig({
         ],
       },
     }),
+    prerenderPaginas(),
   ],
   build: {
     chunkSizeWarningLimit: 600,
