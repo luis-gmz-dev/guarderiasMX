@@ -53,7 +53,7 @@ export const preguntas: Pregunta[] = [
   {
     pregunta: '¿Este sitio usa cookies?',
     respuesta:
-      'No guarda cookies propias de sesión, porque no hay cuentas. Si se muestra un anuncio, Google puede guardar cookies para medirlo y elegirlo. Puedes limitarlas en tu navegador o en la configuración de anuncios de Google. El detalle está en la página de privacidad.',
+      'No guarda cookies propias de sesión, porque no hay cuentas. Google puede guardar cookies del anuncio y de la medición de visitas, con Google Tag Manager. Puedes limitarlas en tu navegador. El detalle está en la página de privacidad.',
   },
   {
     pregunta: '¿Qué hago si la dirección o el teléfono no coinciden?',

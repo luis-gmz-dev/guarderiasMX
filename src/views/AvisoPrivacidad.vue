@@ -13,7 +13,7 @@ import { sitio } from '@/domain/sitio'
     <ul>
       <li>La búsqueda se hace en tu navegador. No hay un perfil tuyo en este sitio.</li>
       <li>La ubicación, si la permites, no sale de tu equipo.</li>
-      <li>Las cookies que pueden aparecer son las del anuncio de Google, no una sesión de este mapa.</li>
+      <li>Las cookies que pueden aparecer son las de Google: el anuncio y la medición de visitas. No hay una sesión de este mapa.</li>
       <li>Bloquear cookies no impide consultar el directorio.</li>
     </ul>
 
@@ -36,12 +36,17 @@ import { sitio } from '@/domain/sitio'
     <h2>Por qué hay cookies</h2>
     <p>
       Este mapa no instala cookies propias para recordar una sesión, porque no hay inicio de sesión. Las
-      cookies que pueden aparecer vienen de la publicidad.
+      cookies que pueden aparecer vienen de Google: la publicidad y la medición de visitas.
     </p>
     <p>
       El listado y las páginas de texto pueden mostrar un anuncio de Google AdSense, cuenta
       {{ sitio.adsense }}. Google puede guardar cookies para medir el anuncio, limitar cuántas veces se
       muestra y elegir uno según su propia política. Esas cookies no cambian los datos ni el orden de las
+      guarderías.
+    </p>
+    <p>
+      El sitio también carga Google Tag Manager, contenedor {{ sitio.gtm }}, para medir las visitas.
+      Google puede guardar cookies de medición. Esas cookies no cambian el directorio ni el orden de las
       guarderías.
     </p>
     <p>

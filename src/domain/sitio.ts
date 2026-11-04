@@ -7,5 +7,6 @@ export const sitio = {
     'https://www.imss.gob.mx/sites/all/statics/pdf/guarderias/directorio-guarderias-2026.xlsx',
   correo: '',
   adsense: 'ca-pub-7205967251447010',
+  gtm: 'GTM-KNTJ32NC',
   anuncioSlot: '',
 }
