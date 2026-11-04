@@ -1,4 +1,4 @@
-import type { Guarderia, GuarderiaInput } from '@/types/guarderia'
+import type { Guarderia, GuarderiaInput } from '../types/guarderia'
 
 export interface DirectorioPublicado {
   actualizado: string | null
@@ -26,11 +26,7 @@ export function interpretarDirectorio(data: unknown): DirectorioPublicado {
   return {
     actualizado: typeof objeto?.actualizado === 'string' ? objeto.actualizado : null,
     fuente: typeof objeto?.fuente === 'string' ? objeto.fuente : null,
-    guarderias: filas.map((fila) => ({
-      ...fila,
-      id: `local-${fila.clave_presupuestal}`,
-      activo: true,
-    })),
+    guarderias: filas,
   }
 }
 

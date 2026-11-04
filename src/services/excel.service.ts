@@ -34,7 +34,3 @@ export function filasDesdeLibro(data: ArrayBuffer | Uint8Array): ResultadoLote {
 
   return normalizarLote(rows)
 }
-
-export async function leerExcel(file: File): Promise<ResultadoLote> {
-  return filasDesdeLibro(await file.arrayBuffer())
-}

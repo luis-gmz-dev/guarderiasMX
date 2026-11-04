@@ -10,7 +10,6 @@ lerna-debug.log*
 node_modules
 .env
 .env.*
-!.env.example
 .DS_Store
 dist
 dist-ssr
@@ -30,10 +29,6 @@ coverage
 *.tsbuildinfo
 
 .eslintcache
-
-# Cypress
-/cypress/videos/
-/cypress/screenshots/
 
 # Vitest
 __screenshots__/

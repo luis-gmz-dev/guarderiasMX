@@ -30,7 +30,7 @@ describe('directorio publicado', () => {
       filas: [fila('056B01')],
     })
     expect(directorio.actualizado).toBe('2026-11-03')
-    expect(directorio.guarderias[0]).toMatchObject({ clave_presupuestal: '056B01', activo: true })
+    expect(directorio.guarderias[0]?.clave_presupuestal).toBe('056B01')
   })
 
   it('acepta un arreglo suelto sin fecha', () => {
