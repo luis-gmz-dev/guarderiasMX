@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { Search } from 'lucide-vue-next'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
+import { RotateCcw, Search, SlidersHorizontal, X } from 'lucide-vue-next'
 import BloqueAnuncio from '@/components/anuncios/BloqueAnuncio.vue'
 import GuarderiaCard from '@/components/guarderias/GuarderiaCard.vue'
 import GuarderiaFilters from '@/components/filters/GuarderiaFilters.vue'
@@ -36,6 +36,32 @@ function distancia(guarderia: Guarderia): string | null {
 }
 
 const hayFiltro = computed(() => Boolean(props.query || props.estado || props.municipio))
+const filtrosActivos = computed(() => Number(Boolean(props.estado)) + Number(Boolean(props.municipio)))
+const filtrosVisibles = ref(false)
+
+const texto = ref(props.query)
+let temporizador: ReturnType<typeof setTimeout> | undefined
+
+watch(
+  () => props.query,
+  (valor) => {
+    if (valor !== texto.value) texto.value = valor
+  },
+)
+
+function alEscribir(valor: string): void {
+  texto.value = valor
+  clearTimeout(temporizador)
+  temporizador = setTimeout(() => emit('update:query', valor), 140)
+}
+
+function borrarBusqueda(): void {
+  clearTimeout(temporizador)
+  texto.value = ''
+  emit('update:query', '')
+}
+
+onBeforeUnmount(() => clearTimeout(temporizador))
 
 function conteo(): string {
   if (props.loading) return 'Cargando…'
@@ -58,14 +84,35 @@ function limpiar(): void {
       <h1 class="titulo-mapa">Directorio público de guarderías</h1>
       <label class="busqueda">
         <Search :size="18" aria-hidden="true" />
+        <span class="solo-lector">Buscar</span>
         <input
-          :value="query"
+          :value="texto"
           type="search"
+          enterkeyhint="search"
+          autocomplete="off"
           placeholder="Nombre, clave, colonia o municipio"
-          @input="emit('update:query', ($event.target as HTMLInputElement).value)"
+          @input="alEscribir(($event.target as HTMLInputElement).value)"
+          @keydown.esc="borrarBusqueda"
         />
+        <Transition name="icono">
+          <button v-if="texto" type="button" class="busqueda-limpiar" aria-label="Borrar búsqueda" @click.prevent="borrarBusqueda">
+            <X :size="16" aria-hidden="true" />
+          </button>
+        </Transition>
       </label>
+      <button
+        type="button"
+        class="filtros-toggle"
+        :class="{ activo: filtrosVisibles || filtrosActivos > 0 }"
+        :aria-expanded="filtrosVisibles"
+        @click="filtrosVisibles = !filtrosVisibles"
+      >
+        <SlidersHorizontal :size="16" aria-hidden="true" />
+        {{ filtrosVisibles ? 'Ocultar filtros' : 'Filtros' }}
+        <span v-if="filtrosActivos" class="filtros-contador">{{ filtrosActivos }}</span>
+      </button>
       <GuarderiaFilters
+        :class="{ ocultos: !filtrosVisibles }"
         :estados="estados"
         :municipios="municipios"
         :estado="estado"
@@ -75,21 +122,31 @@ function limpiar(): void {
       />
       <div class="conteo-fila">
         <p class="conteo">{{ conteo() }}</p>
-        <button v-if="hayFiltro" type="button" class="texto" @click="limpiar">Limpiar</button>
+        <button v-if="hayFiltro" type="button" class="texto texto-icono" @click="limpiar">
+          <RotateCcw :size="14" aria-hidden="true" />
+          Limpiar
+        </button>
       </div>
-      <p v-if="error" class="aviso">{{ error }}</p>
-      <p v-else-if="!loading && guarderias.length === 0" class="aviso">Ninguna guardería coincide con la búsqueda.</p>
+      <p v-if="error" class="aviso" role="alert">{{ error }}</p>
     </div>
     <div class="cards">
       <BloqueAnuncio />
-      <GuarderiaCard
-        v-for="guarderia in guarderias"
-        :key="guarderia.clave_presupuestal"
-        :guarderia="guarderia"
-        :selected="guarderia.clave_presupuestal === selectedClave"
-        :distancia="distancia(guarderia)"
-        @select="emit('select', guarderia.clave_presupuestal)"
-      />
+      <div v-if="loading" class="esqueletos" aria-busy="true" aria-label="Cargando guarderías">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <template v-else>
+        <p v-if="guarderias.length === 0" class="vacio">Ninguna guardería coincide con la búsqueda.</p>
+        <GuarderiaCard
+          v-for="guarderia in guarderias"
+          :key="guarderia.clave_presupuestal"
+          :guarderia="guarderia"
+          :selected="guarderia.clave_presupuestal === selectedClave"
+          :distancia="distancia(guarderia)"
+          @select="emit('select', guarderia.clave_presupuestal)"
+        />
+      </template>
     </div>
   </div>
 </template>

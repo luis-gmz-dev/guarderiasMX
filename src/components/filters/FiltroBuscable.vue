@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, ref, useId, watch } from 'vue'
-import { ChevronDown } from 'lucide-vue-next'
+import { computed, onBeforeUnmount, ref, useId, watch, type Component } from 'vue'
+import { Check, ChevronDown, X } from 'lucide-vue-next'
 import { coincide } from '@/domain/texto-busqueda'
 
 const props = defineProps<{
   etiqueta: string
+  icono?: Component
   valor: string
   opciones: string[]
   placeholder: string
@@ -110,9 +111,10 @@ function nombre(item: string): string {
 </script>
 
 <template>
-  <label class="combo" ref="raiz">
-    {{ etiqueta }}
+  <label ref="raiz" class="combo" :class="{ 'con-valor': valor, 'con-icono': icono }">
+    <span class="combo-etiqueta">{{ etiqueta }}</span>
     <span class="combo-campo">
+      <component :is="icono" v-if="icono" class="combo-icono-izq" :size="16" aria-hidden="true" />
       <input
         :value="abierto ? texto : valor"
         :placeholder="abierto && valor ? valor : placeholder"
@@ -126,8 +128,19 @@ function nombre(item: string): string {
         @input="onInput"
         @keydown="onKey"
       />
-      <ChevronDown class="combo-icono" :size="16" aria-hidden="true" />
+      <button
+        v-if="valor && !deshabilitado"
+        type="button"
+        class="combo-borrar"
+        :aria-label="`Quitar ${etiqueta.toLowerCase()}`"
+        @pointerdown.prevent
+        @click.prevent="elegir('')"
+      >
+        <X :size="14" aria-hidden="true" />
+      </button>
+      <ChevronDown class="combo-icono" :class="{ abierto }" :size="16" aria-hidden="true" />
     </span>
+    <Transition name="combo">
     <ul v-if="abierto" :id="listaId" class="combo-lista" role="listbox" @pointerdown.prevent>
       <li v-if="visibles.length === 0" class="combo-vacio">Sin coincidencias</li>
       <li v-for="(item, indice) in visibles" :key="`${item}-${indice}`">
@@ -139,9 +152,11 @@ function nombre(item: string): string {
           :class="{ activo: indice === activo }"
           @click="elegir(item)"
         >
-          {{ nombre(item) }}
+          <span>{{ nombre(item) }}</span>
+          <Check v-if="item === valor" :size="16" aria-hidden="true" />
         </button>
       </li>
     </ul>
+    </Transition>
   </label>
 </template>

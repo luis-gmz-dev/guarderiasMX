@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Building2, MapPinned } from 'lucide-vue-next'
 import FiltroBuscable from '@/components/filters/FiltroBuscable.vue'
 
 defineProps<{
@@ -18,6 +19,7 @@ const emit = defineEmits<{
   <div class="filtros">
     <FiltroBuscable
       etiqueta="Estado"
+      :icono="MapPinned"
       :valor="estado"
       :opciones="estados"
       placeholder="Todos los estados"
@@ -25,6 +27,7 @@ const emit = defineEmits<{
     />
     <FiltroBuscable
       etiqueta="Municipio"
+      :icono="Building2"
       :valor="municipio"
       :opciones="municipios"
       :deshabilitado="!estado"
