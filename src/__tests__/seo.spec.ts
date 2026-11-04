@@ -41,8 +41,9 @@ describe('paginas indexables', () => {
     expect(html).toContain(`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${sitio.adsense}`)
     expect(html).toContain('crossorigin="anonymous"')
     expect(html).toContain(`content="${sitio.adsense}"`)
-    expect(html).toContain(`https://www.googletagmanager.com/gtm.js?id=${sitio.gtm}`)
-    expect(html).toContain('function gtag(){dataLayer.push(arguments);}')
+    expect(html).toContain(`'${sitio.gtm}'`)
+    expect(html).toContain("'gtm.start'")
+    expect(html).toContain(`ns.html?id=${sitio.gtm}`)
   })
 })
 
