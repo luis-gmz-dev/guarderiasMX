@@ -6,7 +6,8 @@ import MapView from '@/views/MapView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/', name: 'mapa', component: MapView },
+    { path: '/', name: 'inicio', component: () => import('@/views/Inicio.vue') },
+    { path: '/mapa', name: 'mapa', component: MapView },
     { path: '/admin', redirect: '/' },
     {
       path: '/guias',

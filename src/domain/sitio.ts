@@ -6,6 +6,6 @@ export const sitio = {
   fuenteExcel:
     'https://www.imss.gob.mx/sites/all/statics/pdf/guarderias/directorio-guarderias-2026.xlsx',
   correo: '',
-  adsense: 'ca-pub-5855061986869939',
+  adsense: 'ca-pub-7205967251447010',
   anuncioSlot: '',
 }

@@ -57,7 +57,7 @@ Antes de publicar, escribe el correo de contacto en `src/domain/sitio.ts`. Mient
 
 ## Anuncios
 
-El script de AdSense, con la cuenta `ca-pub-5855061986869939`, está en el `<head>` de `index.html`. El mapa, las preguntas frecuentes, el aviso legal y la privacidad comparten ese HTML, así que el script va en todas. Al cambiar de página, la aplicación lo vuelve a comprobar y no lo duplica. `public/ads.txt` declara la misma cuenta. No hace falta una variable en Cloudflare ni un servidor.
+El script de AdSense, con la cuenta `ca-pub-7205967251447010`, está en el `<head>` de `index.html`. El mapa, las preguntas frecuentes, el aviso legal y la privacidad comparten ese HTML, así que el script va en todas. Al cambiar de página, la aplicación lo vuelve a comprobar y no lo duplica. `public/ads.txt` declara la misma cuenta. No hace falta una variable en Cloudflare ni un servidor.
 
 En AdSense deja apagados los anuncios automáticos. Si se encienden, Google puede tapar el mapa. El bloque manual está en el listado y al final de las páginas de texto. Si creas un bloque de display y AdSense te da un `data-ad-slot`, pégalo en `anuncioSlot` dentro de `src/domain/sitio.ts`.
 

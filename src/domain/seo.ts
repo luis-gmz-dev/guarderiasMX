@@ -49,13 +49,35 @@ export function datosEstructurados(path: string, extra?: Partial<MetaPagina>): R
     }
   }
   if (path === '/') {
+    const secciones = [
+      { nombre: 'Mapa de guarderías', path: '/mapa' },
+      { nombre: 'Dónde están las guarderías del IMSS', path: '/estados' },
+      { nombre: 'Horarios de las guarderías del IMSS', path: '/guias/costo-y-horario' },
+      { nombre: 'Cómo leer el directorio', path: '/guias/como-leer-el-directorio' },
+      { nombre: 'Cómo buscar', path: '/guias/como-usar-el-mapa' },
+      { nombre: 'Preguntas frecuentes', path: '/preguntas-frecuentes' },
+    ]
     return {
       '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: sitio.nombre,
-      url: urlCanonica('/'),
-      description: sitio.descripcion,
-      inLanguage: 'es-MX',
+      '@graph': [
+        {
+          '@type': 'WebSite',
+          name: sitio.nombre,
+          url: urlCanonica('/'),
+          description: descripcion,
+          inLanguage: 'es-MX',
+        },
+        {
+          '@type': 'ItemList',
+          name: 'Secciones del directorio',
+          itemListElement: secciones.map((seccion, indice) => ({
+            '@type': 'ListItem',
+            position: indice + 1,
+            name: seccion.nombre,
+            url: urlCanonica(seccion.path),
+          })),
+        },
+      ],
     }
   }
   const migas = migasDe(path, pagina)

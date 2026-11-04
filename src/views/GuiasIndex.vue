@@ -41,7 +41,7 @@ const iconos: Record<string, Component> = {
       </li>
     </ul>
     <p class="acciones-pagina">
-      <RouterLink class="boton" to="/"><Map :size="16" aria-hidden="true" />Abrir el mapa</RouterLink>
+      <RouterLink class="boton" to="/mapa"><Map :size="16" aria-hidden="true" />Abrir el mapa</RouterLink>
       <RouterLink class="boton secundario" to="/estados">Ver por estado</RouterLink>
     </p>
     <BloqueAnuncio />

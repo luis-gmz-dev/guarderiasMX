@@ -108,7 +108,7 @@ export function filtrarLugar(guarderias: Guarderia[], estado: string, municipio?
 export function enlaceMapa(estado: string, municipio?: string): string {
   const params = new URLSearchParams({ estado })
   if (municipio) params.set('municipio', municipio)
-  return `/?${params.toString()}`
+  return `/mapa?${params.toString()}`
 }
 
 export function nombreUnidad(nombre: string): string {

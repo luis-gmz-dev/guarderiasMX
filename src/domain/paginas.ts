@@ -17,8 +17,15 @@ export interface MetaPagina {
 export const paginasFijas: MetaPagina[] = [
   {
     path: '/',
-    titulo: sitio.nombre,
-    descripcion: sitio.descripcion,
+    titulo: 'Directorio y mapa de guarderías del IMSS',
+    descripcion:
+      'Dónde están las guarderías del IMSS y qué horario trae cada una en el directorio público. No es un sitio del IMSS.',
+  },
+  {
+    path: '/mapa',
+    titulo: 'Mapa de guarderías del IMSS',
+    descripcion:
+      'Busca una guardería del directorio público en el mapa por nombre, estado o municipio. No es un sitio del IMSS.',
   },
   {
     path: '/preguntas-frecuentes',

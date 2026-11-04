@@ -34,7 +34,7 @@ const guia = computed(() => buscarGuia(String(route.params.slug ?? '')))
       Este mapa no es un sitio del IMSS. Las reglas del trámite las aplica el Instituto.
     </p>
     <p class="acciones-pagina">
-      <RouterLink class="boton" to="/"><Map :size="16" aria-hidden="true" />Ver el mapa</RouterLink>
+      <RouterLink class="boton" to="/mapa"><Map :size="16" aria-hidden="true" />Ver el mapa</RouterLink>
       <RouterLink class="boton secundario" to="/estados">
         <MapPin :size="16" aria-hidden="true" />Guarderías por estado
       </RouterLink>

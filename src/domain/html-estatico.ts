@@ -38,6 +38,9 @@ export function xmlSitemap(guarderias: Guarderia[]): string {
 }
 
 export function cuerpoHtml(path: string, guarderias: Guarderia[]): string {
+  if (path === '/') {
+    return `<article class="pagina-aviso"><h1>Directorio y mapa de guarderías del IMSS</h1>${p('Dónde están las guarderías del IMSS y qué horario trae cada una. A veces se busca como diccionario; la lista es el directorio público. No es un sitio del IMSS.')}<h2>Dónde están</h2>${p('La lista por entidad y el mapa muestran la dirección de cada fila del Excel.')}<p>${enlace('/estados', 'Guarderías por estado')} · ${enlace('/mapa', 'Abrir el mapa')}</p><h2>Horarios</h2>${p('Cada unidad trae su horario en el directorio. No hay un horario único para todo el país.')}<p>${enlace('/guias/costo-y-horario', 'Costo y horario')} · ${enlace('/guias/como-leer-el-directorio', 'Cómo leer el directorio')}</p><h2>Cómo buscar</h2>${p('En el mapa se busca por nombre, clave, colonia o municipio.')}<p>${enlace('/guias/como-usar-el-mapa', 'Cómo usar el mapa')} · ${enlace('/preguntas-frecuentes', 'Preguntas frecuentes')}</p><h2>De dónde sale</h2><p><a href="${escapeHtml(sitio.fuenteExcel)}">Directorio público del IMSS (Excel)</a> · ${enlace('/aviso-legal', 'Aviso legal')}</p></article>`
+  }
   if (path === '/preguntas-frecuentes') {
     const items = preguntas
       .map(
@@ -139,7 +142,7 @@ export function inyectarHtml(plantilla: string, path: string, guarderias: Guarde
 export function rutasConCuerpo(guarderias: Guarderia[]): string[] {
   return paginasIndice(guarderias)
     .map((item) => item.path)
-    .filter((path) => path !== '/' && cuerpoHtml(path, guarderias))
+    .filter((path) => cuerpoHtml(path, guarderias))
 }
 
 export { sitio }

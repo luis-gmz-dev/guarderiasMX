@@ -63,6 +63,7 @@ onBeforeUnmount(() => {
         <span class="solo-lector">{{ menuAbierto ? 'Cerrar menú' : 'Abrir menú' }}</span>
       </button>
       <nav id="nav-sitio" ref="navegacion" class="nav-sitio" :class="{ abierto: menuAbierto }">
+        <RouterLink to="/mapa"><Map :size="16" aria-hidden="true" />Mapa</RouterLink>
         <RouterLink to="/guias"><BookOpen :size="16" aria-hidden="true" />Guías</RouterLink>
         <RouterLink to="/estados"><Map :size="16" aria-hidden="true" />Estados</RouterLink>
         <RouterLink to="/preguntas-frecuentes"><CircleHelp :size="16" aria-hidden="true" />Preguntas frecuentes</RouterLink>
@@ -79,6 +80,7 @@ onBeforeUnmount(() => {
     </main>
     <footer class="pie">
       <p>No es un sitio del IMSS.</p>
+      <RouterLink to="/mapa">Mapa</RouterLink>
       <RouterLink to="/guias">Guías</RouterLink>
       <RouterLink to="/estados">Estados</RouterLink>
       <a v-if="sitio.correo" :href="`mailto:${sitio.correo}`">{{ sitio.correo }}</a>

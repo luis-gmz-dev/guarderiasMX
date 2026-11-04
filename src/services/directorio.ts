@@ -31,7 +31,7 @@ export function interpretarDirectorio(data: unknown): DirectorioPublicado {
 }
 
 export async function leerDirectorio(): Promise<DirectorioPublicado> {
-  const respuesta = await fetch('/datos/guarderias.json', { cache: 'no-cache' })
+  const respuesta = await fetch('/datos/guarderias.json')
   if (!respuesta.ok) throw new Error('No se pudo leer el directorio.')
   return interpretarDirectorio(await respuesta.json())
 }

@@ -21,8 +21,11 @@ export function prerenderPaginas(): Plugin {
       const plantilla = readFileSync(join(dist, 'index.html'), 'utf8')
       writeFileSync(join(dist, 'sitemap.xml'), xmlSitemap(directorio.guarderias))
       for (const pagina of paginasIndice(directorio.guarderias)) {
-        if (pagina.path === '/') continue
         const html = inyectarHtml(plantilla, pagina.path, directorio.guarderias)
+        if (pagina.path === '/') {
+          writeFileSync(join(dist, 'index.html'), html)
+          continue
+        }
         const carpeta = join(dist, pagina.path)
         mkdirSync(carpeta, { recursive: true })
         writeFileSync(join(carpeta, 'index.html'), html)
